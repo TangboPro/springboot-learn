@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: Server-Provider
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/sell?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: 1263656881
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8080/eureka/
+
+mybatis-plus:
+  mapper-locations:
+    - classpath*:/mapper/*.xml
+# 日志配置
+logging:
+  level:
+    com.example.eurekaclient.dao: debug
+
