@@ -37,6 +37,8 @@ public class UcUserServiceImpl extends ServiceImpl<UcUserMapper, UcUser> impleme
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private UcUserMapper ucUserMapper;
+    @Autowired
+    RedisServiceImpl redisService;
     @Override
     public UcUser getUserInfoByUsername(String username) {
         Wrapper<UcUser> queryByUserNameWrapper=new QueryWrapper<UcUser>().lambda()

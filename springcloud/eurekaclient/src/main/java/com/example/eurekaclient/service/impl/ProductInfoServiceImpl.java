@@ -3,6 +3,7 @@ package com.example.eurekaclient.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.example.eurekaclient.common.enums.ProductStatusEnum;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.eurekaclient.entry.params.input.DecreaseStockInput;
 import com.example.eurekaclient.entry.vo.ProductGroupCategoryVO;
 import com.example.eurekaclient.entry.vo.ProductInfoVO;
 import com.example.eurekaclient.entry.model.ProductCategory;
@@ -28,6 +29,7 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
     private ProductCategoryService productCategoryService;
     @Autowired
     private ProductInfoDao productInfoDao;
+
     @Override
     public List<ProductGroupCategoryVO> listProductGroupCategory() {
         //1. 查询在架商品
@@ -68,5 +70,10 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
             BeanUtils.copyProperties(product, output);
             return output;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public Boolean decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
+        return null;
     }
 }

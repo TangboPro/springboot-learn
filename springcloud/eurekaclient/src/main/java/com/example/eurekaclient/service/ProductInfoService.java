@@ -1,5 +1,6 @@
 package com.example.eurekaclient.service;
 
+import com.example.eurekaclient.entry.params.input.DecreaseStockInput;
 import com.example.eurekaclient.entry.vo.ProductGroupCategoryVO;
 import com.example.eurekaclient.entry.model.ProductInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -17,6 +18,15 @@ public interface ProductInfoService extends IService<ProductInfo>{
      * @return ProductGroupCategoryDTO
      */
     public List<ProductGroupCategoryVO> listProductGroupCategory();
-
+    /**
+     * 查询商品列表
+     * @param productIdList
+     * @return
+     */
     public List<ProductInfoDTO> findList(List<String> productIdList);
+    /**
+     * 扣库存
+     * @param decreaseStockInputList
+     */
+    Boolean decreaseStock(List<DecreaseStockInput> decreaseStockInputList);
 }

@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class UserCenterApplication {
@@ -12,7 +14,6 @@ public class UserCenterApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserCenterApplication.class, args);
     }
-
     @Bean("jackson2ObjectMapperBuilderCustomizer")
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
         //自增涨id转string对象
