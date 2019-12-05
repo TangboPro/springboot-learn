@@ -10,4 +10,4 @@ eureka:
 
 spring:
   application:
-    name: Server-Consumer
+    name: order-Consumer
