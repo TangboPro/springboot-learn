@@ -29,8 +29,8 @@ public class BaseResult<T> {
     /**
      * 成功返回结果
      *
-     * @param data 获取的数据
-     * @param  message 提示信息
+     * @param data    获取的数据
+     * @param message 提示信息
      */
     public static <T> BaseResult<T> success(T data, String message) {
         return new BaseResult<T>(ResultCode.SUCCESS.getCode(), message, data);
@@ -38,6 +38,7 @@ public class BaseResult<T> {
 
     /**
      * 失败返回结果
+     *
      * @param errorCode 错误码
      */
     public static <T> BaseResult<T> failed(IErrorCode errorCode) {
@@ -46,6 +47,7 @@ public class BaseResult<T> {
 
     /**
      * 失败返回结果
+     *
      * @param message 提示信息
      */
     public static <T> BaseResult<T> failed(String message) {
@@ -68,6 +70,7 @@ public class BaseResult<T> {
 
     /**
      * 参数验证失败返回结果
+     *
      * @param message 提示信息
      */
     public static <T> BaseResult<T> validateFailed(String message) {

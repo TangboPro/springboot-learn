@@ -18,20 +18,22 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = OrderException.class)
     @ResponseBody
     public BaseResult orderErrorHandeler(HttpServletRequest req, Exception e) {
-        LOGGER.error("订单异常捕获"+e.toString());
+        LOGGER.error("订单异常捕获" + e.toString());
         return BaseResult.failed(e.getMessage());
     }
+
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public BaseResult defalutErrorHandeler(HttpServletRequest req, Exception e){
-        LOGGER.error("异常捕获"+e.toString());
+    public BaseResult defalutErrorHandeler(HttpServletRequest req, Exception e) {
+        LOGGER.error("异常捕获" + e.toString());
         return BaseResult.failed();
     }
+
     //校验异常
     @ExceptionHandler(value = BindException.class)
     @ResponseBody
-    public BaseResult validationErrorHandeler(HttpServletRequest req, Exception e){
-        LOGGER.error("校验异常捕获"+e.toString());
+    public BaseResult validationErrorHandeler(HttpServletRequest req, Exception e) {
+        LOGGER.error("校验异常捕获" + e.toString());
         return BaseResult.failed(e.toString());
     }
 }

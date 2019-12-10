@@ -10,7 +10,7 @@ import com.example.eurekaclient.service.ProductCategoryService;
 import java.util.List;
 
 @Service
-public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDao, ProductCategory> implements ProductCategoryService{
+public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDao, ProductCategory> implements ProductCategoryService {
 
     @Autowired
     private ProductCategoryDao productCategoryDao;

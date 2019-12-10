@@ -21,8 +21,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.eurekaclient.entry.model.ProductInfo;
 import com.example.eurekaclient.dao.ProductInfoDao;
 import com.example.eurekaclient.service.ProductInfoService;
+
 @Service
-public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductInfo> implements ProductInfoService{
+public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductInfo> implements ProductInfoService {
 
 
     @Autowired
@@ -33,20 +34,20 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
     @Override
     public List<ProductGroupCategoryVO> listProductGroupCategory() {
         //1. 查询在架商品
-        Wrapper<ProductInfo> queryWrapper=new QueryWrapper<ProductInfo>().lambda().eq(ProductInfo::getProductStatus,ProductStatusEnum.UP);
-        List<ProductInfo> productList=this.list(queryWrapper);
+        Wrapper<ProductInfo> queryWrapper = new QueryWrapper<ProductInfo>().lambda().eq(ProductInfo::getProductStatus, ProductStatusEnum.UP);
+        List<ProductInfo> productList = this.list(queryWrapper);
         //2. 获取类目type列表
         List<Integer> categoryTypeList = productList.stream()
                 .map(ProductInfo::getCategoryType)
                 .collect(Collectors.toList());
         //3. 从数据库查询类目
-        List<ProductCategory> categoryList=productCategoryService.findByCategoryTypeIn(categoryTypeList);
+        List<ProductCategory> categoryList = productCategoryService.findByCategoryTypeIn(categoryTypeList);
 
         //4. 构造数据
         List<ProductGroupCategoryVO> productVOList = new ArrayList<>();
-        for (ProductCategory category: categoryList) {
+        for (ProductCategory category : categoryList) {
             List<ProductInfoVO> productInfoList = new ArrayList<>();
-            for (ProductInfo productInfo: productList) {
+            for (ProductInfo productInfo : productList) {
                 if (productInfo.getCategoryType().equals(category.getCategoryId())) {
                     ProductInfoVO productInfoVO = new ProductInfoVO();
                     BeanUtils.copyProperties(productInfo, productInfoVO);

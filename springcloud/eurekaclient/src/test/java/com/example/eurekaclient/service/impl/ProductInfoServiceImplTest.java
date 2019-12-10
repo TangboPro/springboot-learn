@@ -18,6 +18,7 @@ import java.util.List;
 public class ProductInfoServiceImplTest {
     @Autowired
     private ProductInfoService productService;
+
     @Test
     public void listProductGroupCategory() {
         List<ProductGroupCategoryVO> list = productService.listProductGroupCategory();
@@ -26,7 +27,7 @@ public class ProductInfoServiceImplTest {
 
     @Test
     public void findList() {
-        List<String> ids=new ArrayList<>();
+        List<String> ids = new ArrayList<>();
         ids.add("157875196366160022");
         ids.add("157875227953464068");
         List<ProductInfoDTO> list = productService.findList(ids);

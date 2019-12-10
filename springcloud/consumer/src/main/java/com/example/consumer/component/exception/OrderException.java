@@ -2,7 +2,7 @@ package com.example.consumer.component.exception;
 
 
 public class OrderException extends RuntimeException {
-    public OrderException(String message){
+    public OrderException(String message) {
         super(message);
     }
 }

@@ -24,8 +24,10 @@ public class ProductController {
         //查询
         return BaseResult.success(productService.listProductGroupCategory());
     }
+
     /**
      * 获取商品列表(给订单服务用的)
+     *
      * @param productIdList
      * @return
      */
@@ -38,8 +40,8 @@ public class ProductController {
     @ApiOperation(value = "减少库存")
     @PostMapping("/decreaseStock")
     public Object decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
-        Boolean flag=productService.decreaseStock(decreaseStockInputList);
-        if(flag){
+        Boolean flag = productService.decreaseStock(decreaseStockInputList);
+        if (flag) {
             return BaseResult.success(true);
         }
         return BaseResult.failed();
