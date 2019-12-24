@@ -1,9 +1,12 @@
 package com.example.eurekaclient.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.example.common.exception.ProductException;
+import com.example.common.resultcode.enums.ProductResultEnum;
 import com.example.common.resultcode.enums.ProductStatusEnum;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.eurekaclient.entry.params.input.DecreaseStockInput;
+import com.example.eurekaclient.entry.params.input.ProductInfoOutput;
 import com.example.eurekaclient.entry.vo.ProductGroupCategoryVO;
 import com.example.eurekaclient.entry.vo.ProductInfoVO;
 import com.example.eurekaclient.entry.model.ProductCategory;
@@ -21,6 +24,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.eurekaclient.entry.model.ProductInfo;
 import com.example.eurekaclient.dao.ProductInfoDao;
 import com.example.eurekaclient.service.ProductInfoService;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductInfo> implements ProductInfoService {
@@ -74,7 +78,38 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
     }
 
     @Override
-    public Boolean decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
-        return null;
+    public void decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
+        List<ProductInfo> productInfoList = decreaseStockProcess(decreaseStockInputList);
+
+        //发送mq消息
+        List<ProductInfoOutput> productInfoOutputList = productInfoList.stream().map(e -> {
+            ProductInfoOutput output = new ProductInfoOutput();
+            BeanUtils.copyProperties(e, output);
+            return output;
+        }).collect(Collectors.toList());
+        //mq通知
+        //amqpTemplate.convertAndSend("productInfo", JsonUtil.toJson(productInfoOutputList));
+    }
+
+    @Transactional
+    public List<ProductInfo> decreaseStockProcess(List<DecreaseStockInput> decreaseStockInputList) {
+        List<ProductInfo> productInfoList = new ArrayList<>();
+        for (DecreaseStockInput decreaseStockInput: decreaseStockInputList) {
+            ProductInfo productInfo= productInfoDao.selectById(decreaseStockInput.getProductId());
+            //判断商品是否存在
+            if (productInfo == null) {
+                throw new ProductException(ProductResultEnum.PRODUCT_NOT_EXIST);
+            }
+            //库存是否足够
+            int result = productInfo.getProductStock() - decreaseStockInput.getProductQuantity();
+            if (result < 0) {
+                throw new ProductException(ProductResultEnum.PRODUCT_STOCK_ERROR);
+            }
+
+            productInfo.setProductStock(result);
+            productInfoDao.updateById(productInfo);
+            productInfoList.add(productInfo);
+        }
+        return productInfoList;
     }
 }

@@ -33,5 +33,5 @@ public interface ProductInfoService extends IService<ProductInfo> {
      *
      * @param decreaseStockInputList
      */
-    Boolean decreaseStock(List<DecreaseStockInput> decreaseStockInputList);
+    void decreaseStock(List<DecreaseStockInput> decreaseStockInputList);
 }

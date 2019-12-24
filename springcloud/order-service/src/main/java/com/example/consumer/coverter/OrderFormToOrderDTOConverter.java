@@ -2,29 +2,44 @@ package com.example.consumer.coverter;
 
 import com.example.consumer.dto.OrderDTO;
 import com.example.consumer.form.OrderForm;
+import com.google.common.base.Converter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class OrderFormToOrderDTOConverter {
+public class OrderFormToOrderDTOConverter extends Converter<OrderForm,OrderDTO> {
 
-    public static OrderDTO convert(OrderForm orderForm) {
+    public static OrderFormToOrderDTOConverter instance;
+    @Override
+    protected OrderDTO doForward(OrderForm orderForm) {
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setBuyerName(orderForm.getName());
         orderDTO.setBuyerPhone(orderForm.getPhone());
         orderDTO.setBuyerAddress(orderForm.getAddress());
         orderDTO.setBuyerOpenid(orderForm.getOpenid());
-
-//        List<OrderDetail> orderDetailList = new ArrayList<>();
-//        try {
-//            orderDetailList = gson.fromJson(orderForm.getItems(),
-//                    new TypeToken<List<OrderDetail>>() {
-//                    }.getType());
-//        } catch (Exception e) {
-//            log.error("【json转换】错误, string={}", orderForm.getItems());
-//            throw new OrderException(ResultEnum.PARAM_ERROR);
-//        }
-//        orderDTO.setOrderDetailList(orderDetailList);
-
         return orderDTO;
+    }
+
+    @Override
+    protected OrderForm doBackward(OrderDTO orderDTO) {
+        return null;
+    }
+    public OrderFormToOrderDTOConverter getInstance(){
+        return Singleton.INSTANCE.getInstance();
+    }
+
+    private static enum Singleton {
+        INSTANCE;
+
+        private OrderFormToOrderDTOConverter singleton;
+
+        // JVM会保证此方法绝对只调用一次
+
+        private Singleton() {
+            singleton = new OrderFormToOrderDTOConverter();
+        }
+
+        public OrderFormToOrderDTOConverter getInstance() {
+            return singleton;
+        }
     }
 }

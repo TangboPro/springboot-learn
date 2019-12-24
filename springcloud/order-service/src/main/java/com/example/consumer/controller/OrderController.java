@@ -21,7 +21,7 @@ public class OrderController {
     @PostMapping("/create")
     public Object create(@Valid OrderForm orderForm) {
         // orderForm -> orderDTO
-        OrderDTO orderDTO = OrderFormToOrderDTOConverter.convert(orderForm);
+        OrderDTO orderDTO = new OrderFormToOrderDTOConverter().convert(orderForm);
         return null;
 //        OrderDTO result = orderService.create(orderDTO);
 //
