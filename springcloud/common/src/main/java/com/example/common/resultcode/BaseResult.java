@@ -1,4 +1,4 @@
-package com.example.eurekaclient.common;
+package com.example.common.resultcode;
 
 import lombok.Data;
 

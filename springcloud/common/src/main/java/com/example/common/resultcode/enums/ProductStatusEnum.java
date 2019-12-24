@@ -1,4 +1,4 @@
-package com.example.eurekaclient.common.enums;
+package com.example.common.resultcode.enums;
 
 
 public enum ProductStatusEnum {

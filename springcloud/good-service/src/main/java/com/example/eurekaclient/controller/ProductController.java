@@ -1,6 +1,6 @@
 package com.example.eurekaclient.controller;
 
-import com.example.eurekaclient.common.BaseResult;
+import com.example.common.resultcode.BaseResult;
 import com.example.eurekaclient.entry.params.input.DecreaseStockInput;
 import com.example.eurekaclient.service.ProductInfoService;
 import io.swagger.annotations.Api;

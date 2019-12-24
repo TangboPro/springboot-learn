@@ -1,7 +1,7 @@
 package com.example.eurekaclient.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.example.eurekaclient.common.enums.ProductStatusEnum;
+import com.example.common.resultcode.enums.ProductStatusEnum;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.eurekaclient.entry.params.input.DecreaseStockInput;
 import com.example.eurekaclient.entry.vo.ProductGroupCategoryVO;
