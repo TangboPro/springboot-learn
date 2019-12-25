@@ -1,4 +1,4 @@
-package com.example.goodservice.config;
+package com.example.orderservice.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan({"com.example.goodservice.dao"})
+@MapperScan({"com.example.orderservice.dao"})
 public class MybatisPlusConfig {
     /**
      * 分页插件
