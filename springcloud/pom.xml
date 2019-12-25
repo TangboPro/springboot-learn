@@ -15,7 +15,12 @@
 
     <name>springcloud</name>
     <description>Demo project for Spring Boot</description>
-
+    <modules>
+        <module>common</module>
+        <module>good-service</module>
+        <module>order-service</module>
+        <module>eureka</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,33 +33,13 @@
         <swagger2.version>2.9.2</swagger2.version>
         <mybatis-plus.version>3.1.2</mybatis-plus.version>
         <mysql-connector.version>8.0.15</mysql-connector.version>
-        <common.version>0.0.1-SNAPSHOT</common.version>
-    </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+
+        <common.version>0.0.1-SNAPSHOT</common.version>
+        <good-service.version>0.0.1-SNAPSHOT</good-service.version>
+        <consumer.version>0.0.1-SNAPSHOT</consumer.version>
+        <order-service.version>0.0.1-SNAPSHOT</order-service.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -62,6 +47,21 @@
                 <groupId>com.example</groupId>
                 <artifactId>common</artifactId>
                 <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>good-service</artifactId>
+                <version>${good-service.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>order-service</artifactId>
+                <version>${order-service.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>eureka</artifactId>
+                <version>${eureka.version}</version>
             </dependency>
             <!--spring cloud-->
             <dependency>

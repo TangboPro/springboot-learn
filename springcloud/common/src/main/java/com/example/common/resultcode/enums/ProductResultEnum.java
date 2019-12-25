@@ -1,7 +1,5 @@
 package com.example.common.resultcode.enums;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
 public enum ProductResultEnum {
     PRODUCT_NOT_EXIST(1, "商品不存在"),
     PRODUCT_STOCK_ERROR(2, "库存有误"),

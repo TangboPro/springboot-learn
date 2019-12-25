@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>eurekaclient</artifactId>
+    <artifactId>good-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eurekaclient</name>
+    <name>good-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
