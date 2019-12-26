@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>common</artifactId>
-            <artifactId>${common.version}</artifactId>
+            <version>${common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>

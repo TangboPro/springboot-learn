@@ -1,5 +1,13 @@
 server:
-  port: 8083
+  port: 7001
+
+spring:
+  application:
+    name: good-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/sell?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: 1263656881
 
 eureka:
   client:
@@ -8,19 +16,11 @@ eureka:
     serviceUrl:
       defaultZone: http://127.0.0.1:9080/eureka/
 
-spring:
-  application:
-    name: order-service
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/sell?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    username: root
-    password: 1263656881
-
-
 mybatis-plus:
   mapper-locations:
     - classpath*:/mapper/*.xml
 # 日志配置
 logging:
   level:
-    com.example.orderservice.dao: debug
+    com.example.eurekaclient.dao: debug
+
