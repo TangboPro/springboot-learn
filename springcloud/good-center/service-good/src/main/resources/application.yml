@@ -8,6 +8,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/sell?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     username: root
     password: 1263656881
+  rabbitmq:
+    host: 127.0.0.1
+    port: 15672
+    username: guest
+    password: guest
 
 eureka:
   client:
@@ -22,5 +27,5 @@ mybatis-plus:
 # 日志配置
 logging:
   level:
-    com.example.eurekaclient.dao: debug
+    com.example.servicegood.dao: debug
 

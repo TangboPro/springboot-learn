@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class ProductInfoOutput {
+public class ProductInfoDTO {
     private String productId;
 
     /** 名字. */

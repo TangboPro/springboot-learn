@@ -1,6 +1,6 @@
 package com.example.serviceorder.service;
 
-import com.example.serviceorder.entry.OrderDetail;
+import com.example.baseorder.entry.OrderDetail;
 import com.baomidou.mybatisplus.extension.service.IService;
     /**
  * @Classname OrderDetailService

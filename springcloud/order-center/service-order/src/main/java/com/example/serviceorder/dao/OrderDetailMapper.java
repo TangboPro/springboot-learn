@@ -1,7 +1,7 @@
 package com.example.serviceorder.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.serviceorder.entry.OrderDetail;
+import com.example.baseorder.entry.OrderDetail;
 
 /**
  * @Classname OrderDetailMapper

@@ -1,4 +1,4 @@
-package com.example.serviceorder.entry;
+package com.example.baseorder.entry;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

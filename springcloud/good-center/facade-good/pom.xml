@@ -11,18 +11,22 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>facade-good</name>
 
+    <properties>
+        <base-good.version>0.0.1-SNAPSHOT</base-good.version>
+    </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-core</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>base-good</artifactId>
+            <version>${base-good.version}</version>
         </dependency>
     </dependencies>
 

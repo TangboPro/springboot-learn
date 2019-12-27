@@ -40,10 +40,6 @@ public class ProductController {
     @ApiOperation(value = "减少库存")
     @PostMapping("/decreaseStock")
     public void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
-//        Boolean flag = productService.decreaseStock(decreaseStockInputList);
-//        if (flag) {
-//            return BaseResult.success(true);
-//        }
-//        return BaseResult.failed();
+         productService.decreaseStock(decreaseStockInputList);
     }
 }

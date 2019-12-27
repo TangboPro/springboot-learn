@@ -27,7 +27,6 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("系统Restful API")
                 .description("系统Restful API")
-                .termsOfServiceUrl("http://127.0.0.1:8082/")
                 .version("1.0")
                 .build();
     }

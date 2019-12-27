@@ -12,6 +12,7 @@
     <name>service-good</name>
     <properties>
         <base-good.version>0.0.1-SNAPSHOT</base-good.version>
+        <facade-good.version>0.0.1-SNAPSHOT</facade-good.version>
         <common.version>0.0.1-SNAPSHOT</common.version>
     </properties>
     <dependencies>
@@ -26,7 +27,11 @@
             <artifactId>base-good</artifactId>
             <version>${base-good.version}</version>
         </dependency>
-
+<!--        <dependency>-->
+<!--            <groupId>com.example</groupId>-->
+<!--            <artifactId>facade-good</artifactId>-->
+<!--            <version>${facade-good.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

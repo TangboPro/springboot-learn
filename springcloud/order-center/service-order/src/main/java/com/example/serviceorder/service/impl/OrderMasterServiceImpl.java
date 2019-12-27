@@ -1,11 +1,9 @@
 package com.example.serviceorder.service.impl;
 
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import java.util.List;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.serviceorder.dao.OrderMasterMapper;
-import com.example.serviceorder.entry.OrderMaster;
+import com.example.baseorder.entry.OrderMaster;
 import com.example.serviceorder.service.OrderMasterService;
 /**
  * @Classname OrderMasterServiceImpl

@@ -6,12 +6,13 @@ import com.example.basegood.enums.ProductResultEnum;
 import com.example.basegood.enums.ProductStatusEnum;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.basegood.input.DecreaseStockInput;
-import com.example.basegood.input.ProductInfoOutput;
+import com.example.basegood.input.ProductInfoDTO;
 import com.example.basegood.vo.ProductGroupCategoryVO;
 import com.example.basegood.vo.ProductInfoVO;
 import com.example.basegood.entry.ProductCategory;
-import com.example.basegood.dto.ProductInfoDTO;
+import com.example.common.utils.JacksonUtils;
 import com.example.servicegood.service.ProductCategoryService;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,8 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
     private ProductCategoryService productCategoryService;
     @Autowired
     private ProductInfoDao productInfoDao;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Override
     public List<ProductGroupCategoryVO> listProductGroupCategory() {
@@ -69,9 +72,9 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
     }
 
     @Override
-    public List<ProductInfoDTO> findList(List<String> productIdList) {
+    public List<com.example.basegood.dto.ProductInfoDTO> findList(List<String> productIdList) {
         return productInfoDao.selectBatchIds(productIdList).stream().map(product -> {
-            ProductInfoDTO output = new ProductInfoDTO();
+            com.example.basegood.dto.ProductInfoDTO output = new com.example.basegood.dto.ProductInfoDTO();
             BeanUtils.copyProperties(product, output);
             return output;
         }).collect(Collectors.toList());
@@ -82,13 +85,13 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
         List<ProductInfo> productInfoList = decreaseStockProcess(decreaseStockInputList);
 
         //发送mq消息
-        List<ProductInfoOutput> productInfoOutputList = productInfoList.stream().map(e -> {
-            ProductInfoOutput output = new ProductInfoOutput();
+        List<ProductInfoDTO> productInfoDTOList = productInfoList.stream().map(e -> {
+            ProductInfoDTO output = new ProductInfoDTO();
             BeanUtils.copyProperties(e, output);
             return output;
         }).collect(Collectors.toList());
         //mq通知
-        //amqpTemplate.convertAndSend("productInfo", JsonUtil.toJson(productInfoOutputList));
+        amqpTemplate.convertAndSend("productInfo", JacksonUtils.pojoToJson(productInfoDTOList));
     }
 
     @Transactional
