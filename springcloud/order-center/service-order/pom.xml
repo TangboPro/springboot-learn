@@ -16,6 +16,7 @@
     <properties>
         <base-order.version>0.0.1-SNAPSHOT</base-order.version>
         <common.version>0.0.1-SNAPSHOT</common.version>
+        <facade-good.version>0.0.1-SNAPSHOT</facade-good.version>
     </properties>
 
     <dependencies>
@@ -28,6 +29,11 @@
             <groupId>com.example</groupId>
             <artifactId>base-order</artifactId>
             <version>${base-order.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>facade-good</artifactId>
+            <version>${facade-good.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

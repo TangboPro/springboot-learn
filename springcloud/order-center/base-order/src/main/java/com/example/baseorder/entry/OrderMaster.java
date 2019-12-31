@@ -54,13 +54,13 @@ public class OrderMaster {
      * 订单状态, 默认为新下单
      */
     @TableField(value = "order_status")
-    private Byte orderStatus;
+    private int orderStatus;
 
     /**
      * 支付状态, 默认未支付
      */
     @TableField(value = "pay_status")
-    private Byte payStatus;
+    private int payStatus;
 
     /**
      * 创建时间

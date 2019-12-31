@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan({"com.example.orderservice.dao"})
+@MapperScan({"com.example.serviceorder.dao"})
 public class MybatisPlusConfig {
     /**
      * 分页插件

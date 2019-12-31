@@ -12,6 +12,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>base-order</name>
     <packaging>jar</packaging>
+    <properties>
+        <common.version>0.0.1-SNAPSHOT</common.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -20,6 +23,11 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>common</artifactId>
+            <version>${common.version}</version>
         </dependency>
     </dependencies>
 </project>

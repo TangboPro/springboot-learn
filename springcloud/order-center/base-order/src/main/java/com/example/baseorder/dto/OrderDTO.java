@@ -1,8 +1,10 @@
 package com.example.baseorder.dto;
 
+import com.example.baseorder.entry.OrderDetail;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 public class OrderDTO {
@@ -47,5 +49,5 @@ public class OrderDTO {
      */
     private Integer payStatus;
 
-//    private List<OrderDetail> orderDetailList;
+    private List<OrderDetail> orderDetailList;
 }
