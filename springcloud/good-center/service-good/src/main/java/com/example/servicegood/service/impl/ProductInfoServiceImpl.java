@@ -6,7 +6,7 @@ import com.example.basegood.enums.ProductResultEnum;
 import com.example.basegood.enums.ProductStatusEnum;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.basegood.input.DecreaseStockInput;
-import com.example.basegood.input.ProductInfoDTO;
+import com.example.basegood.dto.ProductInfoDTO;
 import com.example.basegood.vo.ProductGroupCategoryVO;
 import com.example.basegood.vo.ProductInfoVO;
 import com.example.basegood.entry.ProductCategory;
@@ -72,9 +72,9 @@ public class ProductInfoServiceImpl extends ServiceImpl<ProductInfoDao, ProductI
     }
 
     @Override
-    public List<com.example.basegood.dto.ProductInfoDTO> findList(List<String> productIdList) {
+    public List<ProductInfoDTO> findList(List<String> productIdList) {
         return productInfoDao.selectBatchIds(productIdList).stream().map(product -> {
-            com.example.basegood.dto.ProductInfoDTO output = new com.example.basegood.dto.ProductInfoDTO();
+            ProductInfoDTO output = new ProductInfoDTO();
             BeanUtils.copyProperties(product, output);
             return output;
         }).collect(Collectors.toList());

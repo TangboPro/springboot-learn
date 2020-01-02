@@ -2,7 +2,8 @@ package com.example.serviceorder.service.impl;
 
 import cn.hutool.core.util.IdUtil;
 import com.example.basegood.input.DecreaseStockInput;
-import com.example.basegood.input.ProductInfoDTO;
+import com.example.basegood.dto.ProductInfoDTO;
+import com.example.baseorder.coverter.OrderDTOToOrderMasterConverter;
 import com.example.baseorder.dto.OrderDTO;
 import com.example.baseorder.entry.OrderDetail;
 import com.example.baseorder.entry.OrderMaster;
@@ -68,9 +69,8 @@ public class OrderServiceImpl implements OrderService {
         productFacade.decreaseStock(decreaseStockInputList);
 
         //订单入库
-        OrderMaster orderMaster = new OrderMaster();
         orderDTO.setOrderId(orderId);
-        BeanUtils.copyProperties(orderDTO, orderMaster);
+        OrderMaster orderMaster=new OrderDTOToOrderMasterConverter().getInstance().convert(orderDTO);
         orderMaster.setOrderAmount(orderAmout);
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
         orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());

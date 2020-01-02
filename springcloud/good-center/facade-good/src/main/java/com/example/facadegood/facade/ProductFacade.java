@@ -1,7 +1,7 @@
 package com.example.facadegood.facade;
 
 import com.example.basegood.input.DecreaseStockInput;
-import com.example.basegood.input.ProductInfoDTO;
+import com.example.basegood.dto.ProductInfoDTO;
 import com.example.common.resultcode.BaseResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;

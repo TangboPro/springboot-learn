@@ -23,4 +23,4 @@ mybatis-plus:
 # 日志配置
 logging:
   level:
-    com.example.orderservice.dao: debug
+    com.example.serviceorder.dao: debug
