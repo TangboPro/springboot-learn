@@ -25,7 +25,7 @@
         <hutool.version>4.5.7</hutool.version>
         <swagger2.version>2.9.2</swagger2.version>
         <mybatis-plus.version>3.1.2</mybatis-plus.version>
-        <mysql-connector.version>8.0.15</mysql-connector.version>
+        <mysql-connector.version>8.0.16</mysql-connector.version>
         <guava.version>20.0</guava.version>
     </properties>
 
